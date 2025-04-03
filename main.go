@@ -3,6 +3,7 @@ package main
 import (
 	"container/ring"
 	"fmt"
+	"math/rand"
 )
 
 func main() {
@@ -16,6 +17,9 @@ func main() {
 		r.Value = nums[i]
 		r = r.Next()
 	}
+
+	// Randomize starting offset
+	r = r.Move(rand.Intn(r.Len()))
 
 	// Print the ring elements 5 times
 	for i := 0; i < len(nums); i++ {
